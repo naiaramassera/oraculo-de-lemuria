@@ -5,7 +5,7 @@ const services = [
     type: "Tarot",
     title: "Tarot Direto",
     description:
-      "Uma pergunta objetiva com leitura clara sobre energia atual, conselho e tendencia dos proximos passos.",
+      "Uma pergunta objetiva com leitura clara sobre energia atual, conselho e tendência dos próximos passos.",
     duration: "20 min",
     delivery: "Audio ou texto",
     price: 77,
@@ -17,7 +17,7 @@ const services = [
     type: "Tarot",
     title: "Mapa de Caminhos",
     description:
-      "Leitura completa para amor, trabalho ou decisao importante, com bloqueios, oportunidades e orientacao.",
+      "Leitura completa para amor, trabalho ou decisão importante, com bloqueios, oportunidades e orientação.",
     duration: "60 min",
     delivery: "Chamada ou PDF",
     price: 177,
@@ -26,10 +26,10 @@ const services = [
   {
     id: "akashico-alma",
     category: "akashico",
-    type: "Registros Akashicos",
+    type: "Registros Akáshicos",
     title: "Leitura da Alma",
     description:
-      "Acesso aos registros para investigar padroes repetidos, contratos energeticos, dons e aprendizados atuais.",
+      "Acesso aos registros para investigar padrões repetidos, contratos energéticos, dons e aprendizados atuais.",
     duration: "75 min",
     delivery: "Chamada gravada",
     price: 247,
@@ -38,10 +38,10 @@ const services = [
   {
     id: "akashico-relacoes",
     category: "akashico",
-    type: "Registros Akashicos",
-    title: "Vinculos e Contratos",
+    type: "Registros Akáshicos",
+    title: "Vínculos e Contratos",
     description:
-      "Leitura focada em relacoes, acordos espirituais, ciclos familiares e caminhos de liberacao consciente.",
+      "Leitura focada em relações, acordos espirituais, ciclos familiares e caminhos de liberação consciente.",
     duration: "70 min",
     delivery: "Chamada ou PDF",
     price: 222,
@@ -50,10 +50,10 @@ const services = [
   {
     id: "radionica-pessoal",
     category: "radionica",
-    type: "Mesa Radionica",
-    title: "Harmonizacao Pessoal",
+    type: "Mesa Radiônica",
+    title: "Harmonização Pessoal",
     description:
-      "Mesa para equilibrar campo energetico, limpar interferencias e fortalecer intencoes de prosperidade e bem-estar.",
+      "Mesa para equilibrar campo energético, limpar interferências e fortalecer intenções de prosperidade e bem-estar.",
     duration: "48h de trabalho",
     delivery: "Relatorio final",
     price: 197,
@@ -62,10 +62,10 @@ const services = [
   {
     id: "radionica-ambiente",
     category: "radionica",
-    type: "Mesa Radionica",
+    type: "Mesa Radiônica",
     title: "Casa e Ambiente",
     description:
-      "Harmonizacao energetica de ambientes, negocios ou locais de trabalho com foco em fluidez e protecao.",
+      "Harmonização energética de ambientes, negócios ou locais de trabalho com foco em fluidez e proteção.",
     duration: "72h de trabalho",
     delivery: "Relatorio final",
     price: 277,
@@ -128,7 +128,7 @@ function renderServices() {
 
 function renderCart() {
   if (state.cart.length === 0) {
-    cartItems.innerHTML = '<span class="empty-cart">Nenhum servico adicionado ainda.</span>';
+    cartItems.innerHTML = '<span class="empty-cart">Nenhum serviço adicionado ainda.</span>';
     cartTotal.textContent = currency.format(0);
     return;
   }
@@ -186,7 +186,7 @@ orderForm.addEventListener("submit", (event) => {
 
   if (state.cart.length === 0) {
     resultMessage.hidden = false;
-    resultMessage.textContent = "Adicione pelo menos um servico antes de gerar a mensagem.";
+    resultMessage.textContent = "Adicione pelo menos um serviço antes de gerar a mensagem.";
     return;
   }
 
@@ -194,16 +194,16 @@ orderForm.addEventListener("submit", (event) => {
   const selected = state.cart.map((item) => `- ${item.title}: ${currency.format(item.price)}`).join("\n");
   const total = currency.format(state.cart.reduce((sum, item) => sum + item.price, 0));
   const messageParts = [
-    "Ola, quero finalizar meu pedido no Oraculo de Lemuria.",
+    "Olá, quero finalizar meu pedido no Oráculo de Lemúria.",
     "",
     `Nome: ${data.get("nome")}`,
     `Telefone: ${data.get("telefone")}`,
     `E-mail: ${data.get("email")}`,
     `Formato preferido: ${data.get("formato")}`,
-    `Melhor periodo: ${data.get("periodo")}`,
+    `Melhor período: ${data.get("periodo")}`,
     `Pagamento preferido: ${data.get("pagamento")}`,
     "",
-    "Servicos:",
+    "Serviços:",
     selected,
     `Total: ${total}`,
     "",

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Oráculo de Lemúria">
+  <rect width="64" height="64" rx="14" fill="#093c43"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#c68a3a" stroke-width="2"/>
+  <path d="M32 13l3.7 14.8L50 32l-14.3 4.2L32 51l-3.7-14.8L14 32l14.3-4.2L32 13z" fill="#f7d28d"/>
+  <circle cx="32" cy="32" r="5" fill="#8a3f51"/>
+</svg>
