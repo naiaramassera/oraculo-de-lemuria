@@ -4,3 +4,5 @@ screenshots/
 *.log
 *.zip
 .vercel/
+
+.vercel
