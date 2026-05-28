@@ -7,7 +7,7 @@ const services = [
     description:
       "Uma pergunta objetiva com leitura clara sobre energia atual, conselho e tendência dos próximos passos.",
     duration: "20 min",
-    delivery: "Audio ou texto",
+    delivery: "Vídeo gravado",
     price: 77,
     featured: false,
   },
@@ -19,7 +19,7 @@ const services = [
     description:
       "Leitura completa para amor, trabalho ou decisão importante, com bloqueios, oportunidades e orientação.",
     duration: "60 min",
-    delivery: "Chamada ou PDF",
+    delivery: "Vídeo gravado",
     price: 177,
     featured: true,
   },
@@ -31,7 +31,7 @@ const services = [
     description:
       "Acesso aos registros para investigar padrões repetidos, contratos energéticos, dons e aprendizados atuais.",
     duration: "75 min",
-    delivery: "Chamada gravada",
+    delivery: "Vídeo gravado",
     price: 247,
     featured: true,
   },
@@ -43,7 +43,7 @@ const services = [
     description:
       "Leitura focada em relações, acordos espirituais, ciclos familiares e caminhos de liberação consciente.",
     duration: "70 min",
-    delivery: "Chamada ou PDF",
+    delivery: "Vídeo gravado",
     price: 222,
     featured: false,
   },
@@ -55,7 +55,7 @@ const services = [
     description:
       "Mesa para equilibrar campo energético, limpar interferências e fortalecer intenções de prosperidade e bem-estar.",
     duration: "48h de trabalho",
-    delivery: "Relatorio final",
+    delivery: "Vídeo gravado",
     price: 197,
     featured: false,
   },
@@ -67,7 +67,7 @@ const services = [
     description:
       "Harmonização energética de ambientes, negócios ou locais de trabalho com foco em fluidez e proteção.",
     duration: "72h de trabalho",
-    delivery: "Relatorio final",
+    delivery: "Vídeo gravado",
     price: 277,
     featured: false,
   },
@@ -197,10 +197,10 @@ orderForm.addEventListener("submit", (event) => {
     "Olá, quero finalizar meu pedido no Oráculo de Lemúria.",
     "",
     `Nome: ${data.get("nome")}`,
-    `Telefone: ${data.get("telefone")}`,
+    `WhatsApp para receber o vídeo: ${data.get("whatsapp")}`,
     `E-mail: ${data.get("email")}`,
-    `Formato preferido: ${data.get("formato")}`,
-    `Melhor período: ${data.get("periodo")}`,
+    `Forma de entrega: ${data.get("entrega")}`,
+    `Urgência: ${data.get("urgencia")}`,
     `Pagamento preferido: ${data.get("pagamento")}`,
     "",
     "Serviços:",

@@ -14,7 +14,7 @@
     <meta property="og:title" content="Oráculo de Lemúria | Leituras espirituais online">
     <meta
       property="og:description"
-      content="Tarot, registros akáshicos e mesas radiônicas com pedido online e atendimento pelo Instagram."
+      content="Tarot, registros akáshicos e mesas radiônicas com pedido online e entrega por vídeo gravado via WhatsApp."
     >
     <meta property="og:image" content="https://oraculo-de-lemuria.vercel.app/assets/hero-oraculos-lemuria.png">
     <meta property="og:locale" content="pt_BR">
@@ -71,7 +71,7 @@
           </div>
           <div class="trust-row" aria-label="Diferenciais">
             <span>Atendimento reservado</span>
-            <span>Entrega por chamada ou PDF</span>
+            <span>Entrega por vídeo gravado no WhatsApp</span>
             <span>Pagamento por Pix ou cartão</span>
           </div>
         </div>
@@ -126,17 +126,17 @@
           <article>
             <span>02</span>
             <h3>Envie os dados</h3>
-            <p>Informe nome, tema, melhor horário e detalhes importantes para preparar o atendimento.</p>
+            <p>Informe nome, WhatsApp, tema e detalhes importantes para preparar o atendimento.</p>
           </article>
           <article>
             <span>03</span>
             <h3>Confirme</h3>
-            <p>Receba o resumo do pedido e finalize pelo Instagram, link de compra ou atendimento direto.</p>
+            <p>Receba o resumo do pedido e finalize pelo link de compra ou pelo atendimento da marca.</p>
           </article>
           <article>
             <span>04</span>
             <h3>Receba</h3>
-            <p>A entrega acontece por chamada, áudio ou PDF, conforme o serviço contratado.</p>
+            <p>A entrega acontece por vídeo gravado enviado pelo WhatsApp, sem videochamada ou ligação.</p>
           </article>
         </div>
       </section>
@@ -153,7 +153,7 @@
             <li>Descrições específicas para cada tipo de consulta.</li>
             <li>Preços e prazos visíveis sem precisar chamar no privado.</li>
             <li>Formulário que transforma interesse em pedido organizado.</li>
-            <li>Resumo automático para enviar pelo Instagram ou link de venda.</li>
+            <li>Resumo automático para enviar pelo canal de venda ou atendimento.</li>
           </ul>
         </div>
         <aside class="highlight-panel" aria-label="Garantias de atendimento">
@@ -211,15 +211,15 @@
           <details>
             <summary>Quanto tempo demora para receber?</summary>
             <p>
-              A confirmação da agenda acontece em até 24 horas úteis. O prazo final depende do serviço,
-              formato escolhido e disponibilidade de horário.
+              A confirmação do pedido acontece em até 24 horas úteis. O prazo final depende do serviço,
+              da fila de atendimento e da urgência informada.
             </p>
           </details>
           <details>
             <summary>Posso comprar para outra pessoa?</summary>
             <p>
               Leituras e harmonizacoes que envolvem terceiros devem respeitar consentimento e privacidade.
-              No atendimento, sera indicado o melhor formato para cada caso.
+              No atendimento, será indicado se o pedido pode ser feito com segurança e consentimento.
             </p>
           </details>
           <details>
@@ -237,8 +237,8 @@
           <p class="eyebrow">Finalizar compra</p>
           <h2>Monte seu pedido e envie para atendimento</h2>
           <p>
-            Adicione um ou mais serviços, preencha seus dados e gere um resumo pronto para enviar pelo
-            Instagram, marketplace ou link direto de compra.
+            Adicione um ou mais serviços, preencha seus dados e gere um resumo pronto para compra.
+            Todas as entregas são feitas por vídeo gravado via WhatsApp.
           </p>
           <div class="cart-box">
             <h3>Resumo</h3>
@@ -256,31 +256,24 @@
             <input name="nome" type="text" autocomplete="name" required>
           </label>
           <label>
-            Telefone para contato
-            <input name="telefone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required>
+            WhatsApp para receber o vídeo
+            <input name="whatsapp" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required>
           </label>
           <label>
             E-mail
             <input name="email" type="email" autocomplete="email" required>
           </label>
           <label>
-            Melhor formato
-            <select name="formato" required>
-              <option value="">Selecione</option>
-              <option>Chamada de vídeo</option>
-              <option>Áudio gravado</option>
-              <option>PDF escrito</option>
-              <option>Mensagem escrita pelo Instagram</option>
-            </select>
+            Forma de entrega
+            <input name="entrega" type="text" value="Vídeo gravado enviado pelo WhatsApp" readonly>
           </label>
           <label>
-            Melhor periodo
-            <select name="periodo" required>
+            Urgência do pedido
+            <select name="urgencia" required>
               <option value="">Selecione</option>
-              <option>Manhã</option>
-              <option>Tarde</option>
-              <option>Noite</option>
-              <option>Entrega sem chamada ao vivo</option>
+              <option>Entrega padrão</option>
+              <option>Preciso com prioridade</option>
+              <option>Quero combinar prazo antes de pagar</option>
             </select>
           </label>
           <label>
@@ -290,7 +283,7 @@
               <option>Pix</option>
               <option>Cartao</option>
               <option>Mercado Livre</option>
-              <option>Quero combinar pelo Instagram</option>
+              <option>Quero combinar no atendimento</option>
             </select>
           </label>
           <label>

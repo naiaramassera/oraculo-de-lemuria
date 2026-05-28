@@ -32,6 +32,12 @@ const siteConfig = {
 - `marketplaceUrl`: link do Mercado Livre ou outro marketplace, quando existir.
 - `directCheckoutUrl`: link de checkout proprio, quando existir.
 
+Fluxo comercial atual:
+
+- Nao ha videochamada, ligacao ou sessao ao vivo.
+- Todas as leituras e harmonizacoes sao entregues por video gravado enviado pelo WhatsApp.
+- O formulario coleta o WhatsApp do cliente para entrega.
+
 ## Antes de publicar
 
 1. Confirmar precos, nomes dos servicos e prazos em `script.js`.
