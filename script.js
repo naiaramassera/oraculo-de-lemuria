@@ -75,6 +75,7 @@ const services = [
 
 const siteConfig = {
   instagramHandle: "oraculosdelemuria",
+  whatsappNumber: "",
   marketplaceUrl: "",
   directCheckoutUrl: "",
 };
@@ -212,6 +213,9 @@ orderForm.addEventListener("submit", (event) => {
 
   const plainMessage = messageParts.join("\n");
   const encodedMessage = encodeURIComponent(plainMessage);
+  const whatsappUrl = siteConfig.whatsappNumber
+    ? `https://wa.me/${siteConfig.whatsappNumber}?text=${encodedMessage}`
+    : "";
   const instagramUrl = `https://ig.me/m/${siteConfig.instagramHandle}`;
   const marketplaceUrl = siteConfig.marketplaceUrl || "";
   const directCheckoutUrl = siteConfig.directCheckoutUrl
@@ -224,6 +228,11 @@ orderForm.addEventListener("submit", (event) => {
     <textarea class="order-summary" readonly>${plainMessage}</textarea>
     <div class="result-actions">
       <button class="copy-order" type="button" data-copy-order>Copiar pedido</button>
+      ${
+        whatsappUrl
+          ? `<a href="${whatsappUrl}" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>`
+          : `<span class="disabled-action">WhatsApp oficial em configuração</span>`
+      }
       <a href="${instagramUrl}" target="_blank" rel="noopener">Abrir Instagram</a>
       ${marketplaceUrl ? `<a href="${marketplaceUrl}" target="_blank" rel="noopener">Comprar no Mercado Livre</a>` : ""}
       ${directCheckoutUrl ? `<a href="${directCheckoutUrl}" target="_blank" rel="noopener">Finalizar no site</a>` : ""}

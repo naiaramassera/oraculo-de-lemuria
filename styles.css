@@ -696,7 +696,8 @@ textarea {
 }
 
 .result-message a,
-.copy-order {
+.copy-order,
+.disabled-action {
   display: inline-flex;
   align-items: center;
   min-height: 38px;
@@ -707,6 +708,11 @@ textarea {
   background: transparent;
   cursor: pointer;
   font-weight: 800;
+}
+
+.disabled-action {
+  color: rgba(255, 255, 255, 0.62);
+  cursor: not-allowed;
 }
 
 .order-summary {

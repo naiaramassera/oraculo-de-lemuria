@@ -23,12 +23,14 @@ Edite `script.js`:
 ```js
 const siteConfig = {
   instagramHandle: "oraculosdelemuria",
+  whatsappNumber: "",
   marketplaceUrl: "",
   directCheckoutUrl: "",
 };
 ```
 
 - `instagramHandle`: usuario do Instagram sem `@`.
+- `whatsappNumber`: numero oficial do projeto em formato internacional, somente numeros. Exemplo: `5511999999999`. Enquanto estiver vazio, o site mostra que o WhatsApp oficial esta em configuracao.
 - `marketplaceUrl`: link do Mercado Livre ou outro marketplace, quando existir.
 - `directCheckoutUrl`: link de checkout proprio, quando existir.
 
