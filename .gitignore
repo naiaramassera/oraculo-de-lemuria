@@ -1,0 +1,6 @@
+.idea/
+.venv/
+screenshots/
+*.log
+*.zip
+.vercel/
