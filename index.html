@@ -6,7 +6,7 @@
     <title>Oráculo de Lemúria | Tarot, Registros Akáshicos e Mesas Radiônicas</title>
     <meta
       name="description"
-      content="Leituras espirituais, tarot, registros akáshicos e mesas radiônicas com atendimento online, orientação clara e acolhimento."
+      content="Tarot online, registros akáshicos e mesa radiônica à distância para amor, trabalho, energia pessoal, ambientes e decisões com entrega por WhatsApp."
     >
     <meta name="theme-color" content="#093c43">
     <meta property="og:type" content="website">
@@ -45,13 +45,17 @@
         </span>
       </a>
       <nav class="nav-links" aria-label="Navegacao principal">
+        <a href="#guia">Guia</a>
+        <a href="#buscas">Buscas</a>
+        <a href="#assinaturas">Assinaturas</a>
+        <a href="#oraculo-inteligente">Oráculo</a>
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#faq">FAQ</a>
         <a href="#pedido">Comprar</a>
       </nav>
-      <a class="header-action" href="#pedido">Agendar agora</a>
+      <a class="header-action" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">WhatsApp</a>
     </header>
 
     <main>
@@ -66,13 +70,13 @@
             linguagem direta e orientação prática para o seu momento.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#servicos">Ver leituras</a>
-            <a class="button ghost" href="#pedido">Montar pedido</a>
+            <a class="button primary" href="#guia">Descobrir terapia</a>
+            <a class="button ghost" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">Chamar no WhatsApp</a>
           </div>
           <div class="trust-row" aria-label="Diferenciais">
             <span>Atendimento reservado</span>
             <span>Entrega por vídeo gravado no WhatsApp</span>
-            <span>Pagamento por Pix ou cartão</span>
+            <span>Planos mensais e tiragens automáticas</span>
           </div>
         </div>
       </section>
@@ -89,6 +93,212 @@
         <div class="intro-item">
           <strong>Mesa radiônica</strong>
           <span>Harmonização energética para ambientes, relações, prosperidade e bloqueios.</span>
+        </div>
+      </section>
+
+      <section class="subscription-section" id="assinaturas" aria-labelledby="subscription-title">
+        <div class="section-heading">
+          <p class="eyebrow">Clube de assinantes</p>
+          <h2 id="subscription-title">Planos mensais com oráculos automáticos e conteúdo exclusivo</h2>
+          <p>
+            O cliente escolhe um plano, recebe acesso às tiragens inteligentes e pode ativar mensagens
+            recorrentes com carta do dia, relatórios semanais e histórico de consultas.
+          </p>
+        </div>
+        <div class="subscription-grid" id="subscriptionGrid"></div>
+      </section>
+
+      <section class="smart-oracle-section" id="oraculo-inteligente" aria-labelledby="smart-oracle-title">
+        <div class="oracle-copy">
+          <p class="eyebrow">Oráculo personalizado</p>
+          <h2 id="smart-oracle-title">Uma leitura simbólica guiada pela pergunta do cliente</h2>
+          <p>
+            Escreva a pergunta, escolha a abertura e receba uma interpretação com cartas, síntese,
+            conselho e prática de integração. A proposta é parecer um atendimento cuidado, não uma
+            resposta genérica de máquina.
+          </p>
+          <div class="automation-list">
+            <article>
+              <strong>Carta do dia</strong>
+              <span>Envio diário automático para assinantes por WhatsApp ou e-mail.</span>
+            </article>
+            <article>
+              <strong>Relatório semanal</strong>
+              <span>Síntese das cartas, temas recorrentes e recomendações práticas.</span>
+            </article>
+            <article>
+              <strong>Histórico do cliente</strong>
+              <span>Registro de perguntas, cartas sorteadas, respostas e favoritos.</span>
+            </article>
+          </div>
+        </div>
+        <form class="oracle-panel" id="smartOracleForm">
+          <label>
+            Pergunta do cliente
+            <textarea name="question" rows="4" placeholder="Ex.: O que preciso compreender sobre meu caminho profissional agora?" required></textarea>
+          </label>
+          <label>
+            Tema da leitura
+            <select name="theme" required>
+              <option value="autoconhecimento">Autoconhecimento</option>
+              <option value="amor">Amor e vínculos</option>
+              <option value="trabalho">Trabalho e prosperidade</option>
+              <option value="energia">Energia pessoal</option>
+              <option value="espiritualidade">Caminho espiritual</option>
+            </select>
+          </label>
+          <div class="oracle-controls">
+            <label>
+              Abertura
+              <select name="spread" required>
+                <option value="daily">Carta do dia</option>
+                <option value="three">Passado, presente e futuro</option>
+                <option value="cross">Clareza, bloqueio e caminho</option>
+                <option value="love">Amor e vínculos</option>
+                <option value="work">Trabalho e prosperidade</option>
+              </select>
+            </label>
+            <label>
+              Linguagem
+              <select name="tone" required>
+                <option value="terapeutico">Terapêutico</option>
+                <option value="direto">Direto</option>
+                <option value="mistico">Místico</option>
+                <option value="poetico">Poético</option>
+              </select>
+            </label>
+          </div>
+          <button class="button primary full" type="submit">Abrir leitura</button>
+          <div class="oracle-result" id="oracleResult" hidden></div>
+        </form>
+      </section>
+
+      <section class="member-section" aria-labelledby="member-title">
+        <div class="section-heading">
+          <p class="eyebrow">Área do cliente</p>
+          <h2 id="member-title">Experiência pronta para automatizar o relacionamento</h2>
+          <p>
+            A vitrine já mostra o que entra na plataforma de assinantes. A próxima etapa técnica é
+            conectar login, pagamento recorrente, banco de dados e provedor de IA.
+          </p>
+        </div>
+        <div class="member-grid">
+          <article>
+            <span>01</span>
+            <h3>Login e plano ativo</h3>
+            <p>Cadastro, liberação após pagamento e bloqueio automático quando a assinatura expira.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Limites por plano</h3>
+            <p>Quantidade de tiragens por dia, relatórios premium, PDFs e conteúdo exclusivo.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Entrega recorrente</h3>
+            <p>Rotinas para carta diária, resumo semanal e lembretes enviados no canal escolhido.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Painel administrativo</h3>
+            <p>Gestão de clientes, planos, tiragens, mensagens, pagamentos e indicadores de vendas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-section" id="guia" aria-labelledby="guide-title">
+        <div class="guide-copy">
+          <p class="eyebrow">Guia espiritual interativo</p>
+          <h2 id="guide-title">Descubra qual atendimento combina com seu momento</h2>
+          <p>
+            Responda algumas perguntas rápidas e receba uma indicação de leitura ou harmonização.
+            O resultado já prepara o próximo passo para enviar pelo WhatsApp ou montar o pedido.
+          </p>
+          <ul class="signal-list">
+            <li>Para quem chega com dúvida sobre qual serviço escolher.</li>
+            <li>Para transformar curiosidade em conversa de atendimento.</li>
+            <li>Para orientar amor, trabalho, energia pessoal ou ambiente.</li>
+          </ul>
+          <a class="button primary guide-direct-action" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">Falar direto no WhatsApp</a>
+        </div>
+        <div class="guide-card" id="guideCard" aria-live="polite">
+          <div class="guide-progress">
+            <span id="guideStep">Pergunta 1 de 4</span>
+            <span id="guideTopic">Momento atual</span>
+          </div>
+          <div class="guide-meter" aria-hidden="true">
+            <span id="guideMeter"></span>
+          </div>
+          <h3 id="guideQuestion"></h3>
+          <div class="guide-options" id="guideOptions"></div>
+          <div class="guide-result" id="guideResult" hidden></div>
+        </div>
+      </section>
+
+      <section class="search-intent-section" id="buscas" aria-labelledby="search-intent-title">
+        <div class="section-heading">
+          <p class="eyebrow">O que você está buscando?</p>
+          <h2 id="search-intent-title">Atendimentos para dúvidas, bloqueios e ciclos que pedem clareza</h2>
+          <p>
+            Muitas pessoas chegam sem saber se precisam de tarot, registros akáshicos ou mesa radiônica.
+            Comece pelo que está sentindo e encontre o caminho mais adequado.
+          </p>
+        </div>
+        <div class="intent-grid">
+          <article>
+            <span>Amor e vínculos</span>
+            <h3>Estou confusa sobre uma relação</h3>
+            <p>
+              Para entender sentimentos, padrões, ciclos repetidos, afastamentos, escolhas afetivas
+              e próximos passos com mais consciência.
+            </p>
+            <a href="#guia">Encontrar atendimento</a>
+          </article>
+          <article>
+            <span>Trabalho e dinheiro</span>
+            <h3>Preciso de clareza profissional</h3>
+            <p>
+              Para olhar oportunidades, bloqueios, prosperidade, mudanças de rota e decisões que
+              envolvem carreira ou projetos.
+            </p>
+            <a href="#guia">Encontrar atendimento</a>
+          </article>
+          <article>
+            <span>Energia pessoal</span>
+            <h3>Sinto peso, cansaço ou travas</h3>
+            <p>
+              Para investigar interferências, fortalecer o campo energético e harmonizar intenções
+              ligadas a bem-estar e fluidez.
+            </p>
+            <a href="#guia">Encontrar atendimento</a>
+          </article>
+          <article>
+            <span>Casa e ambiente</span>
+            <h3>A energia do lugar está pesada</h3>
+            <p>
+              Para harmonizar casa, negócio ou ambiente de trabalho quando há sensação de estagnação,
+              conflitos ou baixa vitalidade.
+            </p>
+            <a href="#guia">Encontrar atendimento</a>
+          </article>
+          <article>
+            <span>Caminho espiritual</span>
+            <h3>Quero entender meu propósito</h3>
+            <p>
+              Para olhar dons, aprendizados da alma, contratos energéticos e padrões profundos que
+              se repetem na vida atual.
+            </p>
+            <a href="#guia">Encontrar atendimento</a>
+          </article>
+          <article>
+            <span>Decisão urgente</span>
+            <h3>Preciso de uma resposta objetiva</h3>
+            <p>
+              Para perguntas diretas sobre uma escolha, uma conversa, uma oportunidade ou um caminho
+              que precisa de orientação rápida.
+            </p>
+            <a href="#pedido">Montar pedido</a>
+          </article>
         </div>
       </section>
 
@@ -287,6 +497,16 @@
             </select>
           </label>
           <label>
+            Plano de assinatura
+            <select name="assinatura">
+              <option>Sem assinatura agora</option>
+              <option>Plano Essencial mensal</option>
+              <option>Plano Premium mensal</option>
+              <option>Plano VIP mensal</option>
+              <option>Quero assinatura anual</option>
+            </select>
+          </label>
+          <label>
             Tema principal
             <textarea name="tema" rows="5" placeholder="Conte brevemente o que deseja olhar na leitura." required></textarea>
           </label>
@@ -301,6 +521,11 @@
       <div>
         <strong>Oráculo de Lemúria</strong>
         <p>Tarot, registros akáshicos e mesas radiônicas com atendimento online.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/oraculosdelemuria/" target="_blank" rel="noopener" class="social-link">
+            📷 @oraculosdelemuria
+          </a>
+        </div>
       </div>
       <a href="#inicio">Voltar ao topo</a>
     </footer>
@@ -311,11 +536,16 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Oráculo de Lemúria",
-        "description": "Leituras de tarot, registros akáshicos e mesas radiônicas com atendimento online.",
+        "description": "Tarot online, registros akáshicos e mesa radiônica à distância para amor, trabalho, energia pessoal, ambientes e decisões.",
         "areaServed": "BR",
         "url": "https://oraculo-de-lemuria.vercel.app",
         "sameAs": ["https://www.instagram.com/oraculosdelemuria/"],
-        "serviceType": ["Tarot", "Registros akáshicos", "Mesa radiônica"]
+        "serviceType": [
+          "Tarot online",
+          "Registros akáshicos online",
+          "Mesa radiônica à distância",
+          "Leitura espiritual por WhatsApp"
+        ]
       }
     </script>
   </body>
