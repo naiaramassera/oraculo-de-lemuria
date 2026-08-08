@@ -1,6 +1,6 @@
 # Campanha de lançamento — Círculo de Lemúria (R$ 27/mês)
 
-Destino: https://oraculosdelemuria.vercel.app/#assinaturas
+Destino: https://oraculo-de-lemuria.vercel.app/#assinaturas
 Perfil: @oraculosdelemuria
 
 ---
@@ -37,7 +37,7 @@ Leitura coletiva semanal em vídeo, carta do dia, mesa radiônica de harmonizaç
 
 R$ 27/mês. Cancela quando quiser.
 
-👉 Entre no Círculo: oraculosdelemuria.vercel.app
+👉 Entre no Círculo: oraculo-de-lemuria.vercel.app
 
 ---
 
