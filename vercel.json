@@ -17,6 +17,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "tracking.js",
+      "use": "@vercel/static"
+    },
+    {
       "src": "assets/**",
       "use": "@vercel/static"
     }
@@ -41,6 +45,10 @@
     {
       "src": "/script.js",
       "dest": "/script.js"
+    },
+    {
+      "src": "/tracking.js",
+      "dest": "/tracking.js"
     },
     {
       "src": "/(.*)",
