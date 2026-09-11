@@ -375,6 +375,67 @@ textarea {
   font-weight: 700;
 }
 
+.subscription-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  justify-items: stretch;
+}
+
+.subscription-actions .add-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link-button {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  text-decoration: underline;
+  padding: 2px;
+}
+
+.link-button:hover {
+  color: var(--teal-dark);
+}
+
+.optional-hint {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* CTA fixo: quase todo o trafego de Instagram chega pelo celular. */
+.sticky-whatsapp {
+  display: none;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: 60;
+  padding: 15px 20px;
+  border-radius: 999px;
+  background: #128c7e;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(4, 30, 36, 0.35);
+}
+
+@media (max-width: 900px) {
+  .sticky-whatsapp {
+    display: block;
+  }
+
+  body {
+    padding-bottom: 84px;
+  }
+}
+
 .subscription-badge {
   display: inline-block;
   margin-top: 10px;

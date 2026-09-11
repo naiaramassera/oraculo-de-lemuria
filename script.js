@@ -340,11 +340,30 @@ function renderSubscriptions() {
               ${plan.benefits.map((benefit) => `<li>${benefit}</li>`).join("")}
             </ul>
           </div>
-          <button class="add-button" type="button" data-plan="${plan.id}">Escolher plano</button>
+          <div class="subscription-actions">
+            ${
+              planWhatsappUrl(plan)
+                ? `<a class="add-button" href="${planWhatsappUrl(plan)}" target="_blank" rel="noopener">Assinar pelo WhatsApp</a>`
+                : ""
+            }
+            <button class="link-button" type="button" data-plan="${plan.id}">Prefiro preencher um formulário</button>
+          </div>
         </article>
       `
     )
     .join("");
+}
+
+// Caminho de um clique: quem vem de anuncio nao deveria precisar de um
+// formulario de 8 campos para assinar um plano de R$ 27.
+function planWhatsappUrl(plan) {
+  if (!siteConfig.whatsappNumber) return "";
+  const message = [
+    `Olá! Quero assinar o plano ${plan.name} (${currency.format(plan.price)}/mês) do Oráculo de Lemúria.`,
+    "",
+    "Pode me explicar como funciona o pagamento?",
+  ].join("\n");
+  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
 function selectPlan(id) {

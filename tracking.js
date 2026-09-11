@@ -188,10 +188,39 @@
     }
   });
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", watchPlansSection);
-  } else {
+  /* --------------------------------------------- correspondencia de mensagem */
+
+  // Quem clica num anuncio do Circulo precisa cair numa pagina que fala do
+  // Circulo. Promessa do anuncio diferente da promessa da pagina e o motivo
+  // mais comum de trafego pago caro que nao converte.
+  function matchMessageToCampaign() {
+    if ((attribution.campaign || "").indexOf("circulo") === -1) return;
+
+    var title = document.getElementById("hero-title");
+    var copy = document.querySelector(".hero-copy");
+    var primary = document.querySelector(".hero-actions .button.primary");
+
+    if (title) title.textContent = "Orientação espiritual toda semana, não só quando aperta.";
+    if (copy) {
+      copy.textContent =
+        "O Círculo de Lemúria é o plano de assinatura do Oráculo: leitura coletiva toda semana, " +
+        "carta do dia e mesa radiônica mensal por R$ 27.";
+    }
+    if (primary) {
+      primary.textContent = "Conhecer o Círculo";
+      primary.setAttribute("href", "#assinaturas");
+    }
+  }
+
+  function onReady() {
+    matchMessageToCampaign();
     watchPlansSection();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady);
+  } else {
+    onReady();
   }
 
   // Exposto para depuração: no console, OL_TRACK.ref mostra a origem gravada.
