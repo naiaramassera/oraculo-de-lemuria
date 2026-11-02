@@ -853,7 +853,6 @@ function init() {
       `WhatsApp para receber o vídeo: ${data.get("whatsapp")}`,
       data.get("email") ? `E-mail: ${data.get("email")}` : null,
       `Forma de entrega: ${data.get("entrega")}`,
-      `Urgência: ${data.get("urgencia")}`,
       `Pagamento preferido: ${data.get("pagamento")}`,
       `Assinatura: ${subscription}`,
       "",
@@ -878,7 +877,7 @@ function init() {
 
     resultMessage.hidden = false;
     resultMessage.innerHTML = `
-      <strong>Pedido pronto.</strong> Copie o resumo abaixo e envie pelo canal escolhido.
+      <strong>Pedido pronto.</strong> Envie pelo WhatsApp: você recebe o pagamento por lá e, depois de pago, marcamos juntas o melhor dia para a sua leitura.
       <textarea class="order-summary" readonly>${escapeHtml(plainMessage)}</textarea>
       <div class="result-actions">
         <button class="copy-order" type="button" data-copy-order>Copiar pedido</button>

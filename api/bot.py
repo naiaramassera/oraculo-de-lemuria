@@ -28,7 +28,7 @@ Como o atendimento funciona (não invente nada fora disso):
 - Todas as terapias são 100% online e feitas à distância, para o Brasil e o exterior.
 - Toda leitura e harmonização é entregue por VÍDEO GRAVADO enviado no WhatsApp; a pessoa não precisa estar conectada na hora.
 - Não existe videochamada, ligação, sessão ao vivo nem atendimento presencial.
-- A confirmação do pedido acontece em até 24 horas úteis.
+- Fluxo depois do pedido: a pessoa paga e, DEPOIS do pagamento, a Naiara combina com ela o melhor dia para a leitura ou harmonização. No dia marcado, o vídeo chega no WhatsApp. Sempre deixe esse passo claro quando a pessoa perguntar como funciona, prazo ou entrega, e nunca prometa uma data antes do pagamento.
 - Pagamento por Pix, cartão ou link de pagamento, confirmado na conversa.
 
 Leituras avulsas:
@@ -157,7 +157,8 @@ def _fallback(texto: str) -> str:
             "• Registros Akáshicos: a partir de R$ 222\n"
             "• Mesa Radiônica: a partir de R$ 197\n"
             "• Círculo de Lemúria (assinatura): R$ 27/mês\n\n"
-            f"Tudo é entregue em vídeo gravado aqui no WhatsApp. Detalhes: {site}"
+            "Depois do pagamento, combinamos juntas o melhor dia e a leitura chega em vídeo "
+            f"gravado aqui no WhatsApp. Detalhes: {site}"
         )
     if any(p in t for p in ("círculo", "circulo", "assinatura", "plano", "mensal")):
         return (
@@ -169,19 +170,19 @@ def _fallback(texto: str) -> str:
         return (
             "O tarot aqui é uma leitura de clareza, não de destino fechado. 🌙\n\n"
             "Para uma pergunta objetiva, o Tarot Direto (R$ 97). Para olhar o tema com calma, "
-            "o Mapa de Caminhos (R$ 177). Os dois chegam em vídeo gravado no WhatsApp.\n\n"
+            "o Mapa de Caminhos (R$ 177). Após o pagamento, marcamos juntas o melhor dia e o vídeo chega no WhatsApp.\n\n"
             "Me conta: o que está pedindo clareza na sua vida agora?"
         )
     if any(p in t for p in ("akash", "alma", "padrão", "padrao", "contrato")):
         return (
             "Os Registros Akáshicos olham padrões que se repetem, contratos e aprendizados da alma. ✨\n\n"
-            "Leitura da Alma: R$ 247 • Vínculos e Contratos: R$ 222. Entrega em vídeo gravado.\n\n"
+            "Leitura da Alma: R$ 247 • Vínculos e Contratos: R$ 222. Após o pagamento, marcamos o melhor dia e você recebe em vídeo.\n\n"
             "Qual padrão você sente que mais se repete hoje?"
         )
     if any(p in t for p in ("radiôn", "radion", "mesa", "energia", "casa", "ambiente")):
         return (
             "A Mesa Radiônica é um trabalho de harmonização energética feito à distância. 🌿\n\n"
-            "Harmonização Pessoal: R$ 197 • Casa e Ambiente: R$ 277. Você recebe o retorno em vídeo.\n\n"
+            "Harmonização Pessoal: R$ 197 • Casa e Ambiente: R$ 277. Após o pagamento, marcamos o melhor dia e você recebe o retorno em vídeo.\n\n"
             "É para você ou para algum ambiente?"
         )
     return (
