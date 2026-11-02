@@ -76,3 +76,17 @@ Quando tiver a URL final, coloque esse endereco no campo `url` do JSON-LD em `in
 - `script.js`: catalogo, carrinho e geracao do pedido.
 - `assets/hero-oraculos-lemuria.png`: imagem principal do site.
 - `vercel.json`: configuracao para deploy estatico na Vercel.
+
+## Bot de WhatsApp (`api/`)
+
+Variaveis de ambiente na Vercel:
+
+- `WHATSAPP_PROVIDER`: `evolution` ou `zapi` (vazio = modo simulado, so registra no log).
+- `ANTHROPIC_API_KEY` ou `OPENAI_API_KEY`: sem elas, o bot usa respostas prontas por palavra-chave.
+- `WEBHOOK_SECRET`: recomendado. Configure o webhook como
+  `https://SEU-SITE/webhook/whatsapp?token=SEU_SEGREDO` (ou envie o header `X-Webhook-Token`).
+  Sem isso, qualquer pessoa pode chamar o webhook e gastar seus creditos.
+- `ORACULOS_LINK_SITE`: link do site usado nas respostas prontas.
+
+Precos e servicos citados pelo bot ficam em `SYSTEM_PROMPT` e `_fallback` em `api/bot.py`.
+Ao mudar precos em `script.js`, atualize tambem esses dois pontos.

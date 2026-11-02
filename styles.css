@@ -1494,3 +1494,21 @@ textarea {
     flex-direction: column;
   }
 }
+
+.oracle-upsell {
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(247, 210, 141, 0.48);
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(247, 210, 141, 0.08);
+}
+
+.oracle-upsell p {
+  margin: 0;
+}
+
+.oracle-upsell [data-oracle-add] {
+  color: #1b1030;
+  background: #f7d28d;
+}

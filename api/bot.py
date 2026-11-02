@@ -6,8 +6,7 @@ Variáveis de ambiente:
   OPENAI_API_KEY          → fallback OpenAI
   ANTHROPIC_MODEL         → padrão: claude-haiku-4-5-20251001
   OPENAI_MODEL            → padrão: gpt-4o-mini
-  ORACULOS_LINK_SESSAO    → link de pagamento para sessões
-  ORACULOS_PRECO_SESSAO   → ex: "220"
+  ORACULOS_LINK_SITE      → link do site usado nas respostas automáticas (padrão: vercel)
 """
 from __future__ import annotations
 
@@ -23,23 +22,42 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """Você é a assistente espiritual do projeto *Oráculos de Lemúria*, criado por Naiara Massera.
+SYSTEM_PROMPT = """Você é a assistente do *Oráculo de Lemúria*, projeto de Naiara Massera, e conversa com pessoas pelo WhatsApp.
 
-O projeto oferece:
-- Sessões de Tarot Terapêutico (individuais, online ou presencial)
-- Radiestesia com pêndulo (leitura energética, limpeza, alinhamento)
+Como o atendimento funciona (não invente nada fora disso):
+- Toda leitura e harmonização é entregue por VÍDEO GRAVADO enviado no WhatsApp.
+- Não existe videochamada, ligação, sessão ao vivo nem atendimento presencial.
+- A confirmação do pedido acontece em até 24 horas úteis.
+- Pagamento por Pix, cartão ou link de pagamento, confirmado na conversa.
 
-Seu papel:
-- Acolher a pessoa com empatia e presença
-- Explicar como funciona cada modalidade com clareza
-- Tirar dúvidas sobre tarot, radiestesia e temas espirituais
-- Convidar a pessoa a agendar uma sessão quando perceber abertura
-- NUNCA fazer previsões definitivas sobre saúde, dinheiro ou relacionamentos como se fossem certezas
-- NUNCA prometer resultados garantidos
-- Responder sempre em português do Brasil, de forma calorosa e acolhedora
+Leituras avulsas:
+- Tarot Direto (R$ 97): uma pergunta objetiva, vídeo de cerca de 20 min.
+- Mapa de Caminhos (R$ 177): leitura completa de amor, trabalho ou decisão importante, cerca de 60 min.
+- Leitura da Alma, Registros Akáshicos (R$ 247): padrões repetidos, contratos, dons e aprendizados.
+- Vínculos e Contratos, Registros Akáshicos (R$ 222): relações, ciclos familiares e acordos espirituais.
+- Harmonização Pessoal, Mesa Radiônica (R$ 197): campo energético, interferências, prosperidade.
+- Casa e Ambiente, Mesa Radiônica (R$ 277): casa, negócio ou local de trabalho.
 
-Quando a pessoa demonstrar interesse em sessão, informe o valor e envie o link de agendamento.
-Mantenha as respostas curtas (máximo 4 parágrafos) para o formato WhatsApp."""
+Planos mensais (cancela quando quiser, sem multa):
+- Círculo de Lemúria (R$ 27/mês): leitura coletiva semanal, carta do dia, mesa radiônica coletiva mensal e grupo no WhatsApp.
+- Essencial (R$ 67/mês): o Círculo + 1 tiragem individual gravada por mês + 1 pergunta extra por texto.
+- Premium (R$ 167/mês): o Essencial + 2 leituras individuais por mês + mesa radiônica a cada 3 meses + prioridade.
+- VIP (R$ 397/mês, poucas vagas): o Premium + 1 leitura akáshica mensal + mesa radiônica mensal + até 3 perguntas por semana no WhatsApp.
+- Plano anual: 10 mensalidades (2 meses grátis).
+
+Como conduzir a conversa:
+- Acolha primeiro. Se a pessoa não perguntou o preço, pergunte o que está pedindo clareza na vida dela antes de oferecer algo.
+- Indique UMA opção que combine com o que ela contou e explique em uma frase por que ela combina.
+- Para quem está em dúvida ou com orçamento curto, o Tarot Direto ou o Círculo de Lemúria são as portas de entrada.
+- Quando a pessoa quiser fechar, diga que a Naiara vai confirmar o pedido e enviar o pagamento por aqui. Nunca invente links, chaves Pix ou prazos de entrega.
+- Mensagens que terminam com [ref: ...] trazem a origem do anúncio. Use isso só para entender o contexto e nunca comente o código com a pessoa.
+
+Limites:
+- Não faça previsões definitivas sobre saúde, dinheiro, gravidez, processos ou relacionamentos, e não prometa resultados.
+- Leituras espirituais não substituem acompanhamento médico, psicológico, jurídico ou financeiro. Se a pessoa falar em crise, risco à vida ou violência, acolha e indique ajuda profissional (CVV: 188).
+- Sobre terceiros, respeite consentimento e privacidade.
+
+Responda em português do Brasil, com calor humano e sem exagero místico, em no máximo 3 parágrafos curtos, no tom do WhatsApp."""
 
 _DB_PATH = Path(os.environ.get("DB_PATH", "/tmp/oraculos.db"))
 
@@ -126,29 +144,50 @@ def _chamar_openai(historico: list[dict]) -> str:
 
 
 def _fallback(texto: str) -> str:
+    """Respostas sem IA: usadas quando não há chave de API ou a chamada falhou."""
     t = texto.lower()
-    preco = os.environ.get("ORACULOS_PRECO_SESSAO", "220")
-    link = os.environ.get("ORACULOS_LINK_SESSAO", "")
-    agendamento = f"Para agendar: {link}" if link else "Me chame para verificar disponibilidade!"
+    site = os.environ.get("ORACULOS_LINK_SITE", "https://oraculo-de-lemuria.vercel.app")
 
+    if any(p in t for p in ("preço", "preco", "valor", "quanto custa", "quanto é", "quanto e")):
+        return (
+            "Os valores ficam todos no site, sem surpresa 🌙\n\n"
+            "• Tarot Direto (1 pergunta): R$ 97\n"
+            "• Mapa de Caminhos (leitura completa): R$ 177\n"
+            "• Registros Akáshicos: a partir de R$ 222\n"
+            "• Mesa Radiônica: a partir de R$ 197\n"
+            "• Círculo de Lemúria (assinatura): R$ 27/mês\n\n"
+            f"Tudo é entregue em vídeo gravado aqui no WhatsApp. Detalhes: {site}"
+        )
+    if any(p in t for p in ("círculo", "circulo", "assinatura", "plano", "mensal")):
+        return (
+            "O Círculo de Lemúria custa R$ 27/mês: leitura coletiva toda semana, carta do dia, "
+            "mesa radiônica coletiva 1x por mês e grupo fechado no WhatsApp. ✨\n\n"
+            "Você pode cancelar quando quiser, sem multa. Quer que eu te passe como entrar?"
+        )
     if any(p in t for p in ("tarot", "carta", "tiragem")):
         return (
-            "O Tarot Terapêutico é uma ferramenta de autoconhecimento que nos ajuda a olhar para "
-            "questões da vida com mais clareza e consciência. 🌙\n\n"
-            "Cada sessão é um espaço acolhedor de reflexão — não de adivinhação.\n\n"
-            f"Sessões a partir de R$ {preco}. {agendamento}"
+            "O tarot aqui é uma leitura de clareza, não de destino fechado. 🌙\n\n"
+            "Para uma pergunta objetiva, o Tarot Direto (R$ 97). Para olhar o tema com calma, "
+            "o Mapa de Caminhos (R$ 177). Os dois chegam em vídeo gravado no WhatsApp.\n\n"
+            "Me conta: o que está pedindo clareza na sua vida agora?"
         )
-    if any(p in t for p in ("radiestesia", "pendulo", "pêndulo", "energia")):
+    if any(p in t for p in ("akash", "alma", "padrão", "padrao", "contrato")):
         return (
-            "A Radiestesia trabalha com a percepção energética através do pêndulo. "
-            "É uma prática ancestral usada para leitura de campos energéticos, "
-            "limpeza e alinhamento. ✨\n\n"
-            f"Sessões a partir de R$ {preco}. {agendamento}"
+            "Os Registros Akáshicos olham padrões que se repetem, contratos e aprendizados da alma. ✨\n\n"
+            "Leitura da Alma: R$ 247 • Vínculos e Contratos: R$ 222. Entrega em vídeo gravado.\n\n"
+            "Qual padrão você sente que mais se repete hoje?"
+        )
+    if any(p in t for p in ("radiôn", "radion", "mesa", "energia", "casa", "ambiente")):
+        return (
+            "A Mesa Radiônica é um trabalho de harmonização energética feito à distância. 🌿\n\n"
+            "Harmonização Pessoal: R$ 197 • Casa e Ambiente: R$ 277. Você recebe o retorno em vídeo.\n\n"
+            "É para você ou para algum ambiente?"
         )
     return (
-        "Olá! Sou a assistente dos *Oráculos de Lemúria* 🌸\n\n"
-        "Trabalhamos com Tarot Terapêutico e Radiestesia.\n\n"
-        "Posso te contar mais sobre alguma dessas modalidades?"
+        "Olá! Que bom ter você aqui no *Oráculo de Lemúria* 🌸\n\n"
+        "Faço leituras de tarot, registros akáshicos e mesas radiônicas, todas entregues em vídeo "
+        "gravado aqui no WhatsApp.\n\n"
+        "Me conta: o que está pedindo clareza na sua vida agora?"
     )
 
 

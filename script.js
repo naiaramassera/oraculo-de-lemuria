@@ -258,6 +258,21 @@ const guideQuestions = [
   },
 ];
 
+// Tudo que o visitante digita passa por aqui antes de ir para innerHTML.
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function whatsappLink(message) {
+  if (!siteConfig.whatsappNumber) return "";
+  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
 const currency = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
@@ -396,8 +411,8 @@ function renderServices() {
             <h3>${service.title}</h3>
             <p>${service.description}</p>
             <div class="service-meta">
-              <span>${service.duration}</span>
-              <span>${service.delivery}</span>
+              <span>${service.duration.includes("min") ? `Vídeo de ~${service.duration}` : service.duration}</span>
+              <span>Entrega no WhatsApp</span>
             </div>
           </div>
           <div class="service-footer">
@@ -435,9 +450,11 @@ function renderCart() {
 
 function addToCart(id) {
   const service = services.find((item) => item.id === id);
-  if (!service || state.cart.some((item) => item.id === id)) return;
-  state.cart.push(service);
-  renderCart();
+  if (!service) return;
+  if (!state.cart.some((item) => item.id === id)) {
+    state.cart.push(service);
+    renderCart();
+  }
   orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -503,7 +520,7 @@ function renderGuideResult() {
       <span>${service.duration}</span>
       <strong>${currency.format(service.price)}</strong>
     </div>
-    <textarea class="guide-summary" readonly>${message}</textarea>
+    <textarea class="guide-summary" readonly>${escapeHtml(message)}</textarea>
     <div class="guide-actions">
       <button type="button" data-guide-add="${service.id}">Adicionar ao pedido</button>
       <button type="button" data-guide-copy>Copiar mensagem</button>
@@ -612,7 +629,7 @@ function buildOracleReading(question, spread, tone, theme, cards) {
   );
 
   return {
-    title: `Leitura para ${question}`,
+    title: `Leitura para ${escapeHtml(question)}`,
     summary: `A carta que sustenta a leitura é ${mainCard.name}. Dentro deste tema, ${getThemeLens(
       theme
     )}. A mensagem central pede presença, discernimento e uma escolha que respeite sua energia atual.`,
@@ -644,9 +661,17 @@ function renderOracleReading(question, spread, tone, theme) {
   const cards = drawCards(question, spread);
   const reading = buildOracleReading(question, spread, tone, theme, cards);
   const plainText = buildOraclePlainText(question, cards, reading);
-  const whatsappUrl = siteConfig.whatsappNumber
-    ? `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(plainText)}`
-    : "";
+  // A tiragem automatica e a isca; a venda e a leitura gravada sobre a mesma pergunta.
+  const upsell = services.find((item) => item.id === (spread === "daily" ? "tarot-direto" : "tarot-profundo"));
+  const whatsappUrl = whatsappLink(
+    [
+      "Olá! Fiz a tiragem gratuita no site do Oráculo de Lemúria e quero a leitura completa gravada.",
+      "",
+      `Minha pergunta: ${question}`,
+      `Cartas que saíram: ${cards.map((card) => `${card.label}: ${card.name}`).join(" | ")}`,
+      `Leitura que me interessa: ${upsell.title} (${currency.format(upsell.price)})`,
+    ].join("\n")
+  );
 
   oracleResult.hidden = false;
   oracleResult.innerHTML = `
@@ -668,11 +693,20 @@ function renderOracleReading(question, spread, tone, theme) {
     <ul class="oracle-reading-list">${reading.positions}</ul>
     <p><strong>${reading.practice}</strong></p>
     <p>${reading.closing}</p>
-    <div class="oracle-actions">
-      <button type="button" data-oracle-copy>Copiar leitura</button>
-      ${whatsappUrl ? `<a href="${whatsappUrl}" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>` : ""}
+    <div class="oracle-upsell">
+      <strong>Quer ir além dos símbolos?</strong>
+      <p>
+        Esta tiragem é automática. Na <b>${upsell.title}</b> eu olho a sua pergunta com calma e
+        gravo um vídeo só para você, com contexto, bloqueios e próximos passos —
+        <b>${currency.format(upsell.price)}</b>.
+      </p>
+      <div class="oracle-actions">
+        <button type="button" data-oracle-add="${upsell.id}">Quero a leitura completa</button>
+        ${whatsappUrl ? `<a href="${whatsappUrl}" target="_blank" rel="noopener">Pedir pelo WhatsApp</a>` : ""}
+        <button type="button" data-oracle-copy>Copiar esta tiragem</button>
+      </div>
     </div>
-    <textarea class="oracle-summary" readonly>${plainText}</textarea>
+    <textarea class="oracle-summary" readonly>${escapeHtml(plainText)}</textarea>
   `;
 }
 
@@ -705,6 +739,15 @@ function init() {
   });
 
   oracleResult.addEventListener("click", async (event) => {
+    const addButton = event.target.closest("[data-oracle-add]");
+    if (addButton) {
+      addToCart(addButton.dataset.oracleAdd);
+      const tema = orderForm.elements.tema;
+      const question = smartOracleForm.elements.question.value.trim();
+      if (tema && !tema.value && question) tema.value = question;
+      return;
+    }
+
     const copyButton = event.target.closest("[data-oracle-copy]");
     if (!copyButton) return;
 
@@ -791,7 +834,7 @@ function init() {
       "",
       `Nome: ${data.get("nome")}`,
       `WhatsApp para receber o vídeo: ${data.get("whatsapp")}`,
-      `E-mail: ${data.get("email")}`,
+      data.get("email") ? `E-mail: ${data.get("email")}` : null,
       `Forma de entrega: ${data.get("entrega")}`,
       `Urgência: ${data.get("urgencia")}`,
       `Pagamento preferido: ${data.get("pagamento")}`,
@@ -805,7 +848,7 @@ function init() {
       `Tema principal: ${data.get("tema")}`,
     ];
 
-    const plainMessage = messageParts.join("\n");
+    const plainMessage = messageParts.filter((part) => part !== null).join("\n");
     const encodedMessage = encodeURIComponent(plainMessage);
     const whatsappUrl = siteConfig.whatsappNumber
       ? `https://wa.me/${siteConfig.whatsappNumber}?text=${encodedMessage}`
@@ -819,7 +862,7 @@ function init() {
     resultMessage.hidden = false;
     resultMessage.innerHTML = `
       <strong>Pedido pronto.</strong> Copie o resumo abaixo e envie pelo canal escolhido.
-      <textarea class="order-summary" readonly>${plainMessage}</textarea>
+      <textarea class="order-summary" readonly>${escapeHtml(plainMessage)}</textarea>
       <div class="result-actions">
         <button class="copy-order" type="button" data-copy-order>Copiar pedido</button>
         ${
