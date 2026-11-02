@@ -45,12 +45,11 @@
         </span>
       </a>
       <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#guia">Guia</a>
-        <a href="#buscas">Buscas</a>
-        <a href="#assinaturas">Assinaturas</a>
-        <a href="#oraculo-inteligente">Oráculo</a>
-        <a href="#servicos">Serviços</a>
+        <a href="#servicos">Leituras</a>
+        <a href="#guia">Qual escolher?</a>
         <a href="#como-funciona">Como funciona</a>
+        <a href="#oraculo-inteligente">Tiragem grátis</a>
+        <a href="#assinaturas">Assinaturas</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#faq">FAQ</a>
         <a href="#pedido">Comprar</a>
@@ -63,20 +62,20 @@
         <img class="hero-image" src="assets/hero-oraculos-lemuria.png" alt="">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow">Atendimento online para Brasil e exterior</p>
+          <p class="eyebrow">100% online · Brasil e exterior</p>
           <h1 id="hero-title">Clareza espiritual para decisões, ciclos e caminhos.</h1>
           <p class="hero-copy">
             Leituras de tarot, registros akáshicos e mesas radiônicas com entrega cuidadosa,
             linguagem direta e orientação prática para o seu momento.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#guia">Descobrir terapia</a>
+            <a class="button primary" href="#servicos">Ver leituras e preços</a>
             <a class="button ghost" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">Chamar no WhatsApp</a>
           </div>
           <div class="trust-row" aria-label="Diferenciais">
-            <span>Atendimento reservado</span>
-            <span>Entrega por vídeo gravado no WhatsApp</span>
-            <span>Planos mensais e tiragens automáticas</span>
+            <span>Todas as terapias 100% online</span>
+            <span>Vídeo gravado no seu WhatsApp</span>
+            <span>Tiragem grátis no site</span>
           </div>
         </div>
       </section>
@@ -96,16 +95,82 @@
         </div>
       </section>
 
-      <section class="subscription-section" id="assinaturas" aria-labelledby="subscription-title">
+      <section class="section" id="servicos">
         <div class="section-heading">
-          <p class="eyebrow">Clube de assinantes</p>
-          <h2 id="subscription-title">Planos mensais com oráculos automáticos e conteúdo exclusivo</h2>
+          <p class="eyebrow">Escolha sua leitura</p>
+          <h2>Leituras e harmonizações 100% online</h2>
           <p>
-            O cliente escolhe um plano, recebe acesso às tiragens inteligentes e pode ativar mensagens
-            recorrentes com carta do dia, relatórios semanais e histórico de consultas.
+            Escolha pelo que você quer olhar agora. Todas são feitas à distância e chegam em vídeo
+            gravado no seu WhatsApp. Ficou em dúvida? Faça o guia logo abaixo.
           </p>
         </div>
-        <div class="subscription-grid" id="subscriptionGrid"></div>
+
+        <div class="filters" role="group" aria-label="Filtrar serviços">
+          <button class="filter-button active" type="button" data-filter="todos">Todos</button>
+          <button class="filter-button" type="button" data-filter="tarot">Tarot</button>
+          <button class="filter-button" type="button" data-filter="akashico">Akáshicos</button>
+          <button class="filter-button" type="button" data-filter="radionica">Radiônica</button>
+        </div>
+
+        <div class="service-grid" id="serviceGrid"></div>
+      </section>
+
+      <section class="guide-section" id="guia" aria-labelledby="guide-title">
+        <div class="guide-copy">
+          <p class="eyebrow">Guia espiritual interativo</p>
+          <h2 id="guide-title">Descubra qual atendimento combina com seu momento</h2>
+          <p>
+            Responda algumas perguntas rápidas e receba uma indicação de leitura ou harmonização.
+            No final, você pode adicionar ao pedido ou mandar o resultado direto no WhatsApp.
+          </p>
+          <ul class="signal-list">
+            <li>Leva menos de 1 minuto: são só 4 perguntas.</li>
+            <li>Você vê o valor e o que recebe antes de decidir.</li>
+            <li>Serve para amor, trabalho, energia pessoal ou ambiente.</li>
+          </ul>
+          <a class="button primary guide-direct-action" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">Falar direto no WhatsApp</a>
+        </div>
+        <div class="guide-card" id="guideCard" aria-live="polite">
+          <div class="guide-progress">
+            <span id="guideStep">Pergunta 1 de 4</span>
+            <span id="guideTopic">Momento atual</span>
+          </div>
+          <div class="guide-meter" aria-hidden="true">
+            <span id="guideMeter"></span>
+          </div>
+          <h3 id="guideQuestion"></h3>
+          <div class="guide-options" id="guideOptions"></div>
+          <div class="guide-result" id="guideResult" hidden></div>
+        </div>
+      </section>
+
+      <section class="process-band" id="como-funciona">
+        <div class="process-heading">
+          <p class="eyebrow">Do pedido à entrega</p>
+          <h2>Uma compra simples, segura e bem orientada</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Escolha</h3>
+            <p>Selecione a leitura ou harmonização mais alinhada com sua pergunta ou momento.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Envie os dados</h3>
+            <p>Informe nome, WhatsApp, tema e detalhes importantes para preparar o atendimento.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Confirme</h3>
+            <p>Receba o resumo do pedido e finalize pelo link de compra ou pelo atendimento da marca.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Receba</h3>
+            <p>A entrega acontece por vídeo gravado enviado pelo WhatsApp, sem videochamada ou ligação.</p>
+          </article>
+        </div>
       </section>
 
       <section class="smart-oracle-section" id="oraculo-inteligente" aria-labelledby="smart-oracle-title">
@@ -173,6 +238,18 @@
         </form>
       </section>
 
+      <section class="subscription-section" id="assinaturas" aria-labelledby="subscription-title">
+        <div class="section-heading">
+          <p class="eyebrow">Clube de assinantes</p>
+          <h2 id="subscription-title">Planos mensais com oráculos automáticos e conteúdo exclusivo</h2>
+          <p>
+            O cliente escolhe um plano, recebe acesso às tiragens inteligentes e pode ativar mensagens
+            recorrentes com carta do dia, relatórios semanais e histórico de consultas.
+          </p>
+        </div>
+        <div class="subscription-grid" id="subscriptionGrid"></div>
+      </section>
+
       <section class="member-section" aria-labelledby="member-title">
         <div class="section-heading">
           <p class="eyebrow">Para assinantes</p>
@@ -203,35 +280,6 @@
             <h3>Sem fidelidade</h3>
             <p>Você pode pausar ou cancelar quando quiser, direto pelo WhatsApp, sem multa.</p>
           </article>
-        </div>
-      </section>
-
-      <section class="guide-section" id="guia" aria-labelledby="guide-title">
-        <div class="guide-copy">
-          <p class="eyebrow">Guia espiritual interativo</p>
-          <h2 id="guide-title">Descubra qual atendimento combina com seu momento</h2>
-          <p>
-            Responda algumas perguntas rápidas e receba uma indicação de leitura ou harmonização.
-            No final, você pode adicionar ao pedido ou mandar o resultado direto no WhatsApp.
-          </p>
-          <ul class="signal-list">
-            <li>Leva menos de 1 minuto: são só 4 perguntas.</li>
-            <li>Você vê o valor e o que recebe antes de decidir.</li>
-            <li>Serve para amor, trabalho, energia pessoal ou ambiente.</li>
-          </ul>
-          <a class="button primary guide-direct-action" href="https://wa.me/5531993031068?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Or%C3%A1culo%20de%20Lem%C3%BAria%20e%20quero%20saber%20qual%20atendimento%20combina%20com%20meu%20momento." target="_blank" rel="noopener">Falar direto no WhatsApp</a>
-        </div>
-        <div class="guide-card" id="guideCard" aria-live="polite">
-          <div class="guide-progress">
-            <span id="guideStep">Pergunta 1 de 4</span>
-            <span id="guideTopic">Momento atual</span>
-          </div>
-          <div class="guide-meter" aria-hidden="true">
-            <span id="guideMeter"></span>
-          </div>
-          <h3 id="guideQuestion"></h3>
-          <div class="guide-options" id="guideOptions"></div>
-          <div class="guide-result" id="guideResult" hidden></div>
         </div>
       </section>
 
@@ -302,55 +350,6 @@
         </div>
       </section>
 
-      <section class="section" id="servicos">
-        <div class="section-heading">
-          <p class="eyebrow">Escolha sua leitura</p>
-          <h2>Produtos espirituais com objetivo claro</h2>
-          <p>
-            Cada serviço foi organizado para que a pessoa entenda o que recebe, para quem é indicado
-            e qual transformação pode buscar antes de comprar.
-          </p>
-        </div>
-
-        <div class="filters" role="group" aria-label="Filtrar serviços">
-          <button class="filter-button active" type="button" data-filter="todos">Todos</button>
-          <button class="filter-button" type="button" data-filter="tarot">Tarot</button>
-          <button class="filter-button" type="button" data-filter="akashico">Akáshicos</button>
-          <button class="filter-button" type="button" data-filter="radionica">Radiônica</button>
-        </div>
-
-        <div class="service-grid" id="serviceGrid"></div>
-      </section>
-
-      <section class="process-band" id="como-funciona">
-        <div class="process-heading">
-          <p class="eyebrow">Do pedido à entrega</p>
-          <h2>Uma compra simples, segura e bem orientada</h2>
-        </div>
-        <div class="steps">
-          <article>
-            <span>01</span>
-            <h3>Escolha</h3>
-            <p>Selecione a leitura ou harmonização mais alinhada com sua pergunta ou momento.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Envie os dados</h3>
-            <p>Informe nome, WhatsApp, tema e detalhes importantes para preparar o atendimento.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Confirme</h3>
-            <p>Receba o resumo do pedido e finalize pelo link de compra ou pelo atendimento da marca.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Receba</h3>
-            <p>A entrega acontece por vídeo gravado enviado pelo WhatsApp, sem videochamada ou ligação.</p>
-          </article>
-        </div>
-      </section>
-
       <section class="section split-section">
         <div>
           <p class="eyebrow">Por que pedir aqui</p>
@@ -412,6 +411,15 @@
         </div>
         <div class="faq-grid">
           <details open>
+            <summary>Funciona mesmo à distância? Preciso estar online na hora?</summary>
+            <p>
+              Sim. Todas as terapias são 100% online: tarot, registros akáshicos e mesa radiônica são
+              feitos à distância, só com o seu nome, sua pergunta e as informações do pedido. Você não
+              precisa estar conectada na hora: recebe o vídeo gravado no WhatsApp e assiste quando
+              quiser, quantas vezes quiser.
+            </p>
+          </details>
+          <details>
             <summary>Como escolho entre tarot, registros akáshicos e mesa radiônica?</summary>
             <p>
               O tarot é indicado para perguntas objetivas e escolhas atuais. Os registros akáshicos
@@ -479,8 +487,7 @@
           </label>
           <label>
             Urgência do pedido
-            <select name="urgencia" required>
-              <option value="">Selecione</option>
+            <select name="urgencia">
               <option>Entrega padrão</option>
               <option>Preciso com prioridade</option>
               <option>Quero combinar prazo antes de pagar</option>
@@ -488,8 +495,7 @@
           </label>
           <label>
             Forma de pagamento preferida
-            <select name="pagamento" required>
-              <option value="">Selecione</option>
+            <select name="pagamento">
               <option>Pix</option>
               <option>Cartão</option>
               <option>Mercado Livre</option>

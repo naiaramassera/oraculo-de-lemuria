@@ -417,12 +417,29 @@ function renderServices() {
           </div>
           <div class="service-footer">
             <strong class="price">${currency.format(service.price)}</strong>
-            <button class="add-button" type="button" data-add="${service.id}">Adicionar</button>
+            ${
+              serviceWhatsappUrl(service)
+                ? `<a class="add-button" href="${serviceWhatsappUrl(service)}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
+                : ""
+            }
+            <button class="link-button" type="button" data-add="${service.id}">Adicionar ao pedido</button>
           </div>
         </article>
       `
     )
     .join("");
+}
+
+// Um clique da vitrine para a conversa: o formulario fica para quem quer
+// combinar varias leituras de uma vez.
+function serviceWhatsappUrl(service) {
+  return whatsappLink(
+    [
+      `Olá! Quero pedir a leitura ${service.title} (${currency.format(service.price)}) do Oráculo de Lemúria.`,
+      "",
+      "Sobre o que eu quero olhar: ",
+    ].join("\n")
+  );
 }
 
 function renderCart() {

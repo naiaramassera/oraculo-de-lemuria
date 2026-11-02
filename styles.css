@@ -1512,3 +1512,18 @@ textarea {
   color: #1b1030;
   background: #f7d28d;
 }
+
+.service-footer {
+  flex-wrap: wrap;
+}
+
+.service-footer .price {
+  flex: 1 0 100%;
+}
+
+.service-footer a.add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
